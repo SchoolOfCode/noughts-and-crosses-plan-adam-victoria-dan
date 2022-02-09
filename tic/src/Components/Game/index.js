@@ -17,8 +17,8 @@ function Game() {
   const [playerTurn, setPlayerTurn] = useState("Player 1");
 
   function handleBoard(index) {
-    const spreadBoard = [...boardValue];
-    const updateBoard = spreadBoard.splice(index, 1, "Place Holder");
+    const updateBoard = [...boardValue];
+    updateBoard[index] = "Place Holder";
     setBoardValue(updateBoard);
     console.log(boardValue);
   }

@@ -1,12 +1,20 @@
-import React from 'react'
-import "./style.css"
+import React from "react";
+import "./style.css";
 
-function Square() {
+function Square({ value, handleBoard }) {
   return (
     <div>
-        <div><button>X</button></div>
-        </div>
-  )
+      <div>
+        <button
+          onClick={() => {
+            handleBoard(value);
+          }}
+        >
+          X
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default Square
+export default Square;
