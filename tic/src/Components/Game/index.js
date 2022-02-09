@@ -3,6 +3,7 @@ import "./style.css";
 import Board from "../Board";
 
 function Game() {
+
   const [boardValue, setBoardValue] = useState([
     null,
     null,
@@ -51,8 +52,11 @@ function Game() {
      checkWinner() 
     },[boardValue])
 
-  function checkWinner() {
+
+  function checkWinner(index) {
+  
     const lines = [
+
         [0,1,2], 
         [3,4,5],
         [6,7,8],
@@ -64,23 +68,17 @@ function Game() {
     ]
      for(let i = 0; i < lines.length; i++){
          const [a,b,c] = lines[i]
-
-    if (boardValue[a] && boardValue[a] === boardValue[b] && boardValue[a] === boardValue[c]) { 
+         if (boardValue.indexOf(null) === -1){
+            // if no more moves game is draw
+            setWinner("DRAW")
+            return
+        } else if (boardValue[a] && boardValue[a] === boardValue[b] && boardValue[a] === boardValue[c]) { 
       setWinner(boardValue[a]);
-      return
-    }
-    else if (boardValue[a] && boardValue[a] !== boardValue[b] && boardValue[a] !== boardValue[c] && boardValue.includes(!null)){
-        setWinner("draw")
-     }}
-    // else if (boardValue.includes(null)){
-    //   return 
-    //     } else if (){
-            
-        
-    }
+      return }
+      }
 
 
-  
+}
 
   return (
     <div className="game">
