@@ -3,7 +3,9 @@ import "./style.css"
 
 function Square() {
   return (
-    <div>index</div>
+    <div>
+        <div><button>X</button></div>
+        </div>
   )
 }
 

@@ -1,0 +1,15 @@
+.board{
+    text-align: center;
+}
+.row-1{
+    display: flex;
+    justify-content: center;
+}
+.row-2{
+    display: flex;
+    justify-content: center;
+}
+.row-3{
+    display: flex;
+    justify-content: center;
+}
