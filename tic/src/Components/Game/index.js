@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./style.css";
 import Board from "../Board";
 
@@ -32,7 +32,7 @@ function Game() {
 
       updateBoard[index] = symbol;
       setBoardValue(updateBoard);
-      checkWinner();
+    //   checkWinner();
       togglePlayer(playerTurn);
       console.log(boardValue);
     }
@@ -47,11 +47,40 @@ function Game() {
     }
   }
 
+ useEffect(()=> {
+     checkWinner() 
+    },[boardValue])
+
   function checkWinner() {
-    if (boardValue[0] && boardValue[1] === boardValue[2]) {
-      setWinner(playerTurn);
+    const lines = [
+        [0,1,2], 
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6]
+    ]
+     for(let i = 0; i < lines.length; i++){
+         const [a,b,c] = lines[i]
+
+    if (boardValue[a] && boardValue[a] === boardValue[b] && boardValue[a] === boardValue[c]) { 
+      setWinner(boardValue[a]);
+      return
     }
-  }
+    else if (boardValue[a] && boardValue[a] !== boardValue[b] && boardValue[a] !== boardValue[c] && boardValue.includes(!null)){
+        setWinner("draw")
+     }}
+    // else if (boardValue.includes(null)){
+    //   return 
+    //     } else if (){
+            
+        
+    }
+
+
+  
 
   return (
     <div className="game">
